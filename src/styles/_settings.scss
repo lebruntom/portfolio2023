@@ -1,0 +1,13 @@
+@font-face {
+  font-family: "BrassMono";
+  src: url("../assets/fonts/brassMono.otf");
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  background-color: #fff3e5;
+}
+* {
+  font-family: BrassMono;
+}

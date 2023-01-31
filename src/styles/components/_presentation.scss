@@ -1,0 +1,54 @@
+.border_top {
+  position: fixed;
+  left: 50vw;
+  border-radius: 0.2em;
+  width: 40vw;
+  height: 0.5em;
+  background-color: $blackPrimary;
+  top: -25vh;
+}
+
+.presentation_container {
+  position: fixed;
+  top: -20vh;
+  left: 50vw;
+  width: 40vw;
+  text-align: justify;
+  line-height: 20px;
+}
+.presentation_container h3 {
+  text-align: center;
+}
+
+.border_bottom_right {
+  position: fixed;
+  width: 20vw;
+  height: 20vh;
+  border-bottom-right-radius: 1em;
+
+  border-right: 0.5em solid $blackPrimary;
+  border-bottom: 0.5em solid $blackPrimary;
+  left: 110vw;
+  bottom: -35vh;
+}
+
+.name {
+  position: fixed;
+  top: -30vh;
+
+  width: max-content;
+  font-weight: bold;
+  font-size: 200%;
+  left: 50vw;
+}
+.detail_container {
+  position: fixed;
+  left: 115vw;
+  top: -20vh;
+}
+.detail_container .list {
+  text-decoration: none;
+  width: max-content;
+  line-height: 40px;
+  list-style-type: none;
+}

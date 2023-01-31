@@ -1,0 +1,15 @@
+.settings_fixed {
+  position: fixed;
+  top: 2em;
+  right: 2em;
+  z-index: 1000000000000;
+}
+
+.svg {
+  // max-width: 800px;
+  // rotate: 90deg;
+  z-index: -111111110;
+  position: fixed;
+  // top: -500px;
+  // right: -150px;
+}
