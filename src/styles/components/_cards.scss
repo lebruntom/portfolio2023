@@ -1,0 +1,30 @@
+.cards_container {
+  height: 50vh;
+  position: absolute;
+  width: auto;
+}
+.cards_container .date {
+  font-size: 2em;
+  position: absolute;
+  rotate: 270deg;
+  left: -2em;
+  top: 1em;
+}
+.cards_container .bar {
+  height: 50vh;
+  width: 0.5vw;
+  border-radius: 0.5em;
+  background: $blue;
+}
+.cards_container .button_container {
+  position: absolute;
+  top: 43vh;
+  left: 1em;
+  width: 15vw;
+}
+.cards_container .card_img {
+  position: absolute;
+  top: 5vh;
+  width: 250px;
+  background-size: cover;
+}

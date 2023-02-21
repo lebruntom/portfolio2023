@@ -1,10 +1,5 @@
 import React, { createContext, useReducer } from "react";
 
-// export interface pathInterface {
-//   depth_level: number
-//   siteId: number
-// }
-
 interface levelInterface {
   name: string;
   number: number;
@@ -52,7 +47,7 @@ type StateAction =
 
 const initialState: StateInterface = {
   level: {
-    name: "Home",
+    name: "",
     number: 1,
   },
   key: {
@@ -73,8 +68,6 @@ const initialState: StateInterface = {
   site: {
     basic: false,
   },
-  // selectedOrganizationId: 0,
-  // selectedSite: { path: [] },
 };
 
 export const Context = createContext([
@@ -86,12 +79,6 @@ export const Store: React.FC<React.PropsWithChildren> = ({ children }) => {
   const [state, dispatch] = useReducer(
     (state: StateInterface, action: StateAction): StateInterface => {
       switch (action.type) {
-        // case "changeOrganization":
-        //   return {
-        //     ...state,
-        //     selectedOrganizationId: action.payload,
-        //     selectedSite: { path: [] },
-        //   }
         case "changeSiteStatus":
           return { ...state, site: action.payload };
         case "changeKeyStatus":
@@ -106,10 +93,6 @@ export const Store: React.FC<React.PropsWithChildren> = ({ children }) => {
   );
 
   return (
-    <Context.Provider value={[state, dispatch]}>
-      {" "}
-      {/* <- this value is gonna be Global state */}
-      {children}
-    </Context.Provider>
+    <Context.Provider value={[state, dispatch]}>{children}</Context.Provider>
   );
 };

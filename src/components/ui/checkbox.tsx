@@ -12,7 +12,7 @@ const Checkbox: React.FC<CheckboxInterface> = ({ ...props }) => {
   const [state, dispatch] = useContext(Context);
 
   const { onChange, id, checked } = props;
-  console.log(checked);
+  // console.log(checked);
   const trfdue = true;
   return (
     <div>
@@ -25,7 +25,11 @@ const Checkbox: React.FC<CheckboxInterface> = ({ ...props }) => {
       />
       <label
         htmlFor={id}
-        className={state.level.number === 1 ? "switch pulse" : "switch"}
+        className={
+          state.level.number === 1 && !state.site.basic
+            ? "switch pulse"
+            : "switch"
+        }
       ></label>
     </div>
   );

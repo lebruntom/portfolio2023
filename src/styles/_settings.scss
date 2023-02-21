@@ -1,13 +1,30 @@
 @font-face {
   font-family: "BrassMono";
-  src: url("../assets/fonts/brassMono.otf");
+  src: url("../assets/fonts/brassMono.woff2");
+}
+
+@font-face {
+  font-family: "sourcecodepro-regular";
+  src: url("../assets/fonts/sourcecodepro-regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
 }
 
 body {
   margin: 0;
-  overflow: hidden;
-  background-color: #fff3e5;
+  padding: 0;
+  background-color: $background;
 }
-* {
-  font-family: BrassMono;
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+div,
+li,
+button {
+  font-family: "sourcecodepro-regular";
+}
+canvas {
+  z-index: 1000000 !important;
 }

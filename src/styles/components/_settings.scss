@@ -1,7 +1,7 @@
 .settings_fixed {
   position: fixed;
-  top: 2em;
-  right: 2em;
+  top: 1.8em;
+  right: 1em;
   z-index: 1000000000000;
 }
 
@@ -9,7 +9,41 @@
   // max-width: 800px;
   // rotate: 90deg;
   z-index: -111111110;
-  position: fixed;
+  position: absolute;
   // top: -500px;
   // right: -150px;
+}
+.local-changer {
+  cursor: pointer;
+  background-color: $background;
+  border-radius: 0.2em;
+  border: 1px solid $grey;
+  padding: 0.5em;
+}
+
+.local-changer-container {
+  top: 1.4em;
+  right: 5.5em;
+  position: fixed;
+  z-index: 1000000000000;
+}
+
+.arrow_setting {
+  position: fixed;
+  rotate: 180deg;
+  width: 50px;
+  top: 3.5em;
+  right: 1.5em;
+}
+.title_switch_settings {
+  position: fixed;
+  top: 8.5em;
+  right: 8em;
+  text-align: center;
+  font-size: 0.7em;
+}
+@media screen and (max-width: 1000px) {
+  .local-changer-container {
+    display: none;
+  }
 }

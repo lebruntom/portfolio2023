@@ -4,7 +4,8 @@
   /* align-items: center; */
   position: fixed;
   width: max-content;
-  left: -21em;
+  // left: -21.5vw;
+  top: 0vh;
 }
 .rules_middle_colum {
   display: flex;
@@ -26,6 +27,7 @@
 
 .rules_column .rules_text {
   padding: 0 1em;
+  text-align: center;
 }
 .rules_middle_colum .rules_text {
   padding: 1em 0;
@@ -50,4 +52,9 @@
   box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset,
     rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+.line_column {
+  display: flex;
+  align-items: center;
+  padding: 0 1em;
 }

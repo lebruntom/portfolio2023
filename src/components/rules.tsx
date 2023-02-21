@@ -1,114 +1,88 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback, useContext } from "react";
+import { useTranslation } from "react-i18next";
 import { BsChevronLeft, BsChevronRight, BsChevronUp } from "react-icons/bs";
+import { Context } from "../store/store";
 import Welcome from "./welcome";
 const Rules: React.FC = () => {
-  const [activeKey, setActiveKey] = useState({
-    right: {
-      pressed: false,
+  const [key, setKey] = useState("");
+  const [state, dispatch] = useContext(Context);
+  const { t } = useTranslation("main");
+
+  const handleKeyDown = useCallback(
+    (event: any) => {
+      switch (event.keyCode) {
+        case 37:
+          if (key !== "right") {
+            setKey("right");
+          }
+          break;
+        case 39:
+          if (key !== "left") {
+            setKey("left");
+          }
+          break;
+        case 38:
+          if (key !== "up") {
+            setKey("up");
+          }
+          break;
+        default:
+          break;
+      }
     },
-    left: {
-      pressed: false,
+    [key]
+  );
+
+  const handleKeyUp = useCallback(
+    (event: any) => {
+      switch (event.keyCode) {
+        case 37:
+          if (key === "right") {
+            setKey("");
+          }
+          break;
+        case 39:
+          if (key === "left") {
+            setKey("");
+          }
+          break;
+        case 38:
+          if (key === "up") {
+            setKey("");
+          }
+          break;
+        default:
+          break;
+      }
     },
-    up: {
-      pressed: false,
-    },
-  });
+    [key]
+  );
 
-  // useEffect(() => {
-  //   const keyDownCallback = function (e: any) {
-  //     switch (e.keyCode) {
-  //       case 37:
-  //         // left
-  //         setActiveKey({
-  //           ...activeKey,
-  //           left: {
-  //             pressed: true,
-  //           },
-  //         });
-  //         break;
+  useEffect(() => {
+    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("keyup", handleKeyUp);
 
-  //       case 39:
-  //         // "right"
-  //         setActiveKey({
-  //           ...activeKey,
-  //           right: {
-  //             pressed: true,
-  //           },
-  //         });
-  //         break;
-
-  //       case 38:
-  //         // "up"
-  //         setActiveKey({
-  //           ...activeKey,
-  //           up: {
-  //             pressed: true,
-  //           },
-  //         });
-  //         break;
-  //     }
-  //   };
-  //   const keyUpCallback = function (e: any) {
-  //     switch (e.keyCode) {
-  //       case 37:
-  //         // "left"
-  //         setActiveKey({
-  //           ...activeKey,
-  //           left: {
-  //             pressed: false,
-  //           },
-  //         });
-  //         break;
-
-  //       case 40:
-  //         // "down"
-  //         break;
-
-  //       case 39:
-  //         // "right"
-  //         setActiveKey({
-  //           ...activeKey,
-  //           right: {
-  //             pressed: false,
-  //           },
-  //         });
-  //         break;
-
-  //       case 38:
-  //         // "up"
-  //         setActiveKey({
-  //           ...activeKey,
-  //           up: {
-  //             pressed: false,
-  //           },
-  //         });
-  //         break;
-  //     }
-  //   };
-  //   document.addEventListener("keydown", keyDownCallback);
-  //   document.addEventListener("keyup", keyUpCallback);
-
-  //   return () => {
-  //     document.removeEventListener("keydown", keyDownCallback);
-  //     document.addEventListener("keyup", keyUpCallback);
-  //   };
-  // }, []);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("keyup", handleKeyUp);
+    };
+  }, [handleKeyDown, handleKeyUp]);
 
   return (
     <div className="rules_container">
       <div className="rules_column">
-        <div className="rules_text"> left to move on left</div>
-        <BsChevronLeft
-          className={
-            activeKey.left.pressed ? "rules_iconSelected" : "rules_icon"
-          }
-        />
+        <div className="line_column">
+          <div className="rules_text">{t("left-rules")}</div>
+          <BsChevronLeft
+            className={key === "right" ? "rules_iconSelected" : "rules_icon"}
+          />
+        </div>
       </div>
       <div className="rules_middle_colum">
         <Welcome />
-        <div className="rules_text">Press up to jump</div>
+        <div className="rules_text">{t("up-rules")}</div>
         <BsChevronUp
-          className={activeKey.up.pressed ? "rules_iconSelected" : "rules_icon"}
+          className={key === "up" ? "rules_iconSelected" : "rules_icon"}
         />
         <img
           src={require("../assets/img/logo.png")}
@@ -117,12 +91,12 @@ const Rules: React.FC = () => {
         />
       </div>
       <div className="rules_column">
-        <BsChevronRight
-          className={
-            activeKey.right.pressed ? "rules_iconSelected" : "rules_icon"
-          }
-        />
-        <div className="rules_text">Press right to move on right</div>
+        <div className="line_column">
+          <BsChevronRight
+            className={key === "left" ? "rules_iconSelected" : "rules_icon"}
+          />
+          <div className="rules_text">{t("right-rules")}</div>
+        </div>
       </div>
     </div>
   );

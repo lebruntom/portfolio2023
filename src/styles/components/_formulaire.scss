@@ -1,0 +1,32 @@
+.formulaire_container {
+}
+
+.formulaire_container_basic {
+}
+
+.formulaire_container form {
+  display: flex;
+  flex-direction: column;
+  width: 360px;
+}
+.formulaire_container .entete {
+  display: flex;
+}
+
+.formulaire_container .entete input {
+  padding: 0.5em;
+  margin: 0.5em;
+}
+.formulaire_container .content {
+  width: 350px;
+}
+.formulaire_container .content textarea {
+  margin: 0.5em;
+  padding: 0.5em;
+  min-width: 100%;
+  width: 100%;
+}
+
+.btn_form {
+  display: flex;
+}

@@ -1,41 +1,66 @@
 import { CiLocationArrow1 } from "react-icons/ci";
 import { BsCalendar } from "react-icons/bs";
 import { AiOutlineCar } from "react-icons/ai";
+import Button from "./ui/Button";
+import { useTranslation } from "react-i18next";
+import React, { useContext } from "react";
+import { Context } from "../store/store";
 
 const Presentation: React.FC = () => {
+  const { t } = useTranslation("main");
+  const [state] = useContext(Context);
+
   return (
-    <div>
-      <div className="border_top"></div>
-      <div className="name">
-        Tom <span>Lebrun</span>
-      </div>
-      <div className="presentation_container">
-        <h3>Presentation</h3>
-        <div className="presentation">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum sunt
-          laudantium excepturi eius quisquam, provident impedit perferendis nisi
-          iure saepe recusandae. Nemo beatae possimus consequuntur fuga dolorum
-          enim consectetur praesentium.
+    <div className={state.site.basic ? "presentation-basic" : "presentation"}>
+      <div className="container">
+        <div className="left">
+          <div className="name">
+            Tom <span>Lebrun</span>
+          </div>
+          <div className="border_top"></div>
+
+          <div className="presentation_container">
+            <h3>{t("presentation-title")}</h3>
+            <div className="content">{t("presentation-content")}</div>
+          </div>
+        </div>
+        <div className="right">
+          <div className="detail_container">
+            <h3>Detail</h3>
+            <div className="list">
+              <li>
+                <BsCalendar className="icon" />
+                {t("label-yo")}
+              </li>
+              <li>
+                <AiOutlineCar className="icon" />
+                {t("label-driving-licence")}
+              </li>
+              <li>
+                <CiLocationArrow1 className="icon" />
+                {t("label-location")}
+              </li>
+            </div>
+          </div>
+          <div className="border_bottom_right">
+            {" "}
+            <Button
+              type="button"
+              main={true}
+              onClick={() => console.log("test")}
+            >
+              Contactez-moi
+            </Button>
+            <Button
+              type="button"
+              main={false}
+              onClick={() => console.log("test2")}
+            >
+              {t("label-contact-me")}
+            </Button>
+          </div>
         </div>
       </div>
-      <div className="detail_container">
-        <h3>Detail</h3>
-        <div className="list">
-          <li>
-            <BsCalendar />
-            20 ans
-          </li>
-          <li>
-            <AiOutlineCar />
-            permis B
-          </li>
-          <li>
-            <CiLocationArrow1 />
-            Vannes{" "}
-          </li>
-        </div>
-      </div>
-      <div className="border_bottom_right"></div>
     </div>
   );
 };

@@ -1,54 +1,173 @@
-.border_top {
+.presentation .border_top {
   position: fixed;
   left: 50vw;
   border-radius: 0.2em;
   width: 40vw;
   height: 0.5em;
-  background-color: $blackPrimary;
+  background-color: $blue;
   top: -25vh;
 }
 
-.presentation_container {
+.presentation .presentation_container {
   position: fixed;
   top: -20vh;
   left: 50vw;
   width: 40vw;
   text-align: justify;
   line-height: 20px;
+  text-indent: 3vw;
 }
-.presentation_container h3 {
+.presentation .presentation_container h3,
+.presentation .detail_container h3 {
   text-align: center;
+  font-weight: bold;
+  font-size: 130%;
 }
 
-.border_bottom_right {
+.presentation .border_bottom_right {
   position: fixed;
   width: 20vw;
   height: 20vh;
   border-bottom-right-radius: 1em;
-
-  border-right: 0.5em solid $blackPrimary;
-  border-bottom: 0.5em solid $blackPrimary;
+  z-index: -1;
+  border-right: 0.5em solid $blue;
+  border-bottom: 0.5em solid $blue;
   left: 110vw;
   bottom: -35vh;
+  padding: 1em;
 }
 
-.name {
+.presentation .name {
   position: fixed;
   top: -30vh;
 
   width: max-content;
-  font-weight: bold;
+  font-weight: 800;
   font-size: 200%;
+  text-transform: uppercase;
   left: 50vw;
 }
-.detail_container {
-  position: fixed;
-  left: 115vw;
-  top: -20vh;
+.presentation .name span,
+.presentation-basic .name span {
+  color: $blue;
 }
-.detail_container .list {
+.presentation .detail_container {
+  position: fixed;
+  left: 112vw;
+  top: -20vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.presentation .detail_container .list {
   text-decoration: none;
   width: max-content;
-  line-height: 40px;
+  line-height: 30px;
   list-style-type: none;
+  padding-bottom: 2em;
+}
+.presentation .detail_container .list li,
+.presentation-basic .detail_container .list li {
+  display: flex;
+  align-items: center;
+}
+.presentation .detail_container .list .icon,
+.presentation-basic .detail_container .list .icon {
+  padding-right: 1em;
+  font-size: 125%;
+}
+
+.presentation-basic {
+  padding: 0 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.presentation-basic .container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+}
+.presentation-basic .border_top {
+  border-radius: 0.2em;
+  width: 40vw;
+  height: 0.5em;
+  background-color: $blue;
+}
+
+.presentation-basic .border_bottom_right {
+  width: 20vw;
+  height: 20vh;
+  min-height: 7em;
+  border-bottom-right-radius: 1em;
+  z-index: -1;
+  border-right: 0.5em solid $blue;
+  border-bottom: 0.5em solid $blue;
+  padding: 1em;
+}
+
+.presentation-basic .content {
+  text-align: justify;
+  max-width: 900px;
+  line-height: 25px;
+}
+.presentation-basic .name {
+  font-weight: 800;
+  font-size: 200%;
+  text-transform: uppercase;
+}
+.presentation-basic .detail_container .list {
+  padding-right: 1em;
+}
+.presentation-basic .presentation_container {
+  padding-top: 1em;
+}
+.presentation-basic .presentation_container h3 {
+  text-align: center;
+}
+.presentation-basic .detail_container {
+  padding-top: 3.5em;
+}
+.presentation-basic .detail_container h3 {
+  text-align: center;
+}
+.presentation-basic .detail_container .list {
+  text-decoration: none;
+  list-style-type: none;
+  padding-bottom: 2em;
+}
+.presentation-basic .detail_container .list li {
+  padding: 1em 0;
+}
+.left {
+  padding-right: 4em;
+}
+.right {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 700px) {
+  .presentation-basic .container {
+    display: flex;
+    flex-direction: column;
+  }
+  .presentation-basic .left {
+    padding-right: 0;
+  }
+  .presentation-basic .border_top {
+    width: 75%;
+  }
+  .presentation-basic .list {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  .presentation-basic .border_bottom_right {
+    width: unset;
+    margin-bottom: 50px;
+  }
 }

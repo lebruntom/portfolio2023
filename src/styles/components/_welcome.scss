@@ -1,69 +1,105 @@
 .welcome_animationText {
   position: fixed;
-  top: -5em;
+  top: -3em;
   font-size: 3em;
-  font-weight: bold;
+  font-family: BrassMono;
+  display: flex;
+  flex-direction: column;
+}
+.welcome-subtile {
+  font-size: 0.3em;
+  display: flex;
+  justify-content: end;
 }
 
-.welcome_animationText span:nth-of-type(2) {
+.welcome {
+  font-size: 3em;
+}
+.welcome_animationText h1,
+.welcome h1 {
+  padding: 0;
+  margin: 0;
+}
+
+.welcome_animationText span:nth-of-type(2),
+.welcome span:nth-of-type(2) {
   animation-delay: 50ms;
 }
-.welcome_animationText span:nth-of-type(3) {
+.welcome_animationText span:nth-of-type(3),
+.welcome span:nth-of-type(3) {
   animation-delay: 0.1s;
 }
-.welcome_animationText span:nth-of-type(4) {
+.welcome_animationText span:nth-of-type(4),
+.welcome span:nth-of-type(4) {
   animation-delay: 0.15s;
 }
-.welcome_animationText span:nth-of-type(5) {
+.welcome_animationText span:nth-of-type(5),
+.welcome span:nth-of-type(5) {
   animation-delay: 0.2s;
 }
-.welcome_animationText span:nth-of-type(6) {
+.welcome_animationText span:nth-of-type(6),
+.welcome span:nth-of-type(6) {
   animation-delay: 0.25s;
 }
-.welcome_animationText span:nth-of-type(7) {
+.welcome_animationText span:nth-of-type(7),
+.welcome span:nth-of-type(7) {
   animation-delay: 0.3s;
 }
-.welcome_animationText span:nth-of-type(8) {
+.welcome_animationText span:nth-of-type(8),
+.welcome span:nth-of-type(8) {
   animation-delay: 0.35s;
 }
-.welcome_animationText span:nth-of-type(9) {
+.welcome_animationText span:nth-of-type(9),
+.welcome span:nth-of-type(9) {
   animation-delay: 0.4s;
 }
-.welcome_animationText span:nth-of-type(10) {
+.welcome_animationText span:nth-of-type(10),
+.welcome span:nth-of-type(10) {
   animation-delay: 0.45s;
 }
-.welcome_animationText span:nth-of-type(11) {
+.welcome_animationText span:nth-of-type(11),
+.welcome span:nth-of-type(11) {
   animation-delay: 0.5s;
 }
-.welcome_animationText span:nth-of-type(12) {
+.welcome_animationText span:nth-of-type(12),
+.welcome span:nth-of-type(12) {
   animation-delay: 0.55s;
 }
-.welcome_animationText span:nth-of-type(13) {
+.welcome_animationText span:nth-of-type(13),
+.welcome span:nth-of-type(13) {
   animation-delay: 0.6s;
 }
-.welcome_animationText span:nth-of-type(14) {
+.welcome_animationText span:nth-of-type(14),
+.welcome span:nth-of-type(14) {
   animation-delay: 0.65s;
 }
-.welcome_animationText span:nth-of-type(15) {
+.welcome_animationText span:nth-of-type(15),
+.welcome span:nth-of-type(15) {
   animation-delay: 0.7s;
 }
-.welcome_animationText span:nth-of-type(16) {
+.welcome_animationText span:nth-of-type(16),
+.welcome span:nth-of-type(16) {
   animation-delay: 0.75s;
 }
-.welcome_animationText span:nth-of-type(17) {
+.welcome_animationText span:nth-of-type(17),
+.welcome span:nth-of-type(17) {
   animation-delay: 0.8s;
 }
-.welcome_animationText span:nth-of-type(18) {
+.welcome_animationText span:nth-of-type(18),
+.welcome span:nth-of-type(18) {
   animation-delay: 0.85s;
 }
-.welcome_animationText span:nth-of-type(19) {
+.welcome_animationText span:nth-of-type(19),
+.welcome span:nth-of-type(19) {
   animation-delay: 0.9s;
 }
-.welcome_animationText span:nth-of-type(20) {
+.welcome_animationText span:nth-of-type(20),
+.welcome span:nth-of-type(20) {
   animation-delay: 0.95s;
 }
-.welcome_animationText span {
-  color: $yellowPrimary;
+.welcome_animationText span,
+.welcome span {
+  color: $blue;
   opacity: 1;
   animation: sideSlide 5s linear;
   animation-iteration-count: infinite;
@@ -71,21 +107,26 @@
 @keyframes sideSlide {
   60% {
     transform: translate(10px, 0) scale(1);
-    color: $yellowPrimary;
+    color: $blue;
   }
   80% {
     transform: translate(10px, 0) scale(1);
-    color: $yellowPrimary;
+    color: $blue;
   }
   99% {
     transform: translate(1px) scale(1.2);
     color: #fff;
-    text-shadow: -1px -1px 0 $yellowPrimary, 1px -1px 0 $yellowPrimary,
-      -1px 1px 0 $yellowPrimary, 1px 1px 0 $yellowPrimary;
+    text-shadow: -1px -1px 0 $blue, 1px -1px 0 $blue, -1px 1px 0 $blue,
+      1px 1px 0 $blue;
   }
   100% {
     transform: translate(0) scale(1);
     opacity: 1s;
-    color: $yellowPrimary;
+    color: $blue;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .welcome {
+    font-size: 2em;
   }
 }
