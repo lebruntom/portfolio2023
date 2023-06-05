@@ -1,32 +1,86 @@
 .formulaire_container {
+  border: 0.3em solid $blue;
+  height: min-content;
+  border-radius: 1em;
+  padding: 3em;
+  position: relative;
+  top: -24vh;
+  width: 40vw;
 }
 
 .formulaire_container_basic {
+  border: 0.3em solid $blue;
+  border-radius: 1em;
+  width: 40vw;
+  padding: 3em;
 }
 
-.formulaire_container form {
+.formulaire_container form,
+.formulaire_container_basic form {
   display: flex;
   flex-direction: column;
-  width: 360px;
+  width: 100%;
 }
-.formulaire_container .entete {
+.formulaire_container .entete,
+.formulaire_container_basic .entete {
   display: flex;
-}
-
-.formulaire_container .entete input {
-  padding: 0.5em;
-  margin: 0.5em;
-}
-.formulaire_container .content {
-  width: 350px;
-}
-.formulaire_container .content textarea {
-  margin: 0.5em;
-  padding: 0.5em;
-  min-width: 100%;
   width: 100%;
 }
 
-.btn_form {
+.formulaire_container .entete input,
+.formulaire_container_basic .entete input {
+  padding: 0.5em;
+  flex: 2;
+  margin: 0.5em;
+}
+.formulaire_container .content,
+.formulaire_container_basic .content {
   display: flex;
+}
+.formulaire_container .content textarea,
+.formulaire_container_basic .content textarea {
+  margin: 0.5em;
+  height: 100px;
+  min-height: 100px;
+  padding: 0.5em;
+  flex: 1;
+}
+
+.formulaire_container .btn_form,
+.formulaire_container_basic .btn_form {
+  display: flex;
+  justify-content: space-between;
+}
+.formulaire_container .btn_form .btn_container,
+.formulaire_container_basic .btn_form .btn_container {
+  flex: 2;
+  margin: 0.5em;
+}
+.alert {
+  display: flex;
+  justify-content: space-between;
+  height: 40px;
+  margin: 0.5em;
+  padding: 0 1em;
+  border-radius: 0.5em;
+  // width: 100%;
+  font-size: 0.8em;
+  background: $successGradient;
+  align-items: center;
+  border: 1px solid #e5e5e5;
+  font-weight: bold;
+}
+.alert-empty {
+  height: 40px;
+  margin: 0.5em;
+  font-weight: bold;
+}
+.icon-success {
+  border-radius: 50%;
+  background-color: rgb(32, 132, 52);
+  padding: 0.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
 }

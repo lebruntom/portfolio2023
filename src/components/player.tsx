@@ -1,5 +1,13 @@
 import { Plane } from "@react-three/drei/core";
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, {
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+  memo,
+  useCallback,
+  useMemo,
+} from "react";
 import { useFrame, useLoader } from "@react-three/fiber";
 import { Mesh, Texture, TextureLoader } from "three";
 import { leftMovement, refresh, rightMovement } from "../hooks/player-movement";
@@ -11,11 +19,13 @@ interface scaleInterface {
   y: number;
 }
 
-const Player: React.FC = () => {
+const Player: React.FC = memo(() => {
   const [state, dispatch] = useContext(Context);
   const { t } = useTranslation("main");
 
   const ref = useRef<Mesh>(null);
+  const maxX = useMemo(() => window.innerWidth / 250, []);
+
   const spriteStandRight = require(`../assets/img/spriteStandRight.png`);
   const spriteStandLeft = require(`../assets/img/spriteStandLeft.png`);
   const spriteRunLeft = require(`../assets/img/spriteRunLeft.png`);
@@ -28,19 +38,6 @@ const Player: React.FC = () => {
   const textureStandLeft = useLoader(TextureLoader, spriteStandLeft) as Texture;
   const textureRunLeft = useLoader(TextureLoader, spriteRunLeft) as Texture;
   const textureRunRight = useLoader(TextureLoader, spriteRunRight) as Texture;
-  // const [keys, setKeys] = useState({
-  //   right: {
-  //     pressed: false,
-  //   },
-  //   left: {
-  //     pressed: false,
-  //   },
-  //   up: {
-  //     pressed: false,
-  //   },
-
-  //   lastKey: "",
-  // });
 
   interface textureAndScaleInterface {
     texture: Texture;
@@ -54,25 +51,26 @@ const Player: React.FC = () => {
 
   const tilesHorizontal = 60;
   const [currentTile, setCurrentTile] = useState<number>(0);
+
   const [jump, setJump] = useState<boolean>(false);
-  const [isLoaded, seIsLoaded] = useState<boolean>(false);
 
   const player = {
     positionY: -3.1,
     positionX: 0,
     velocity: 0.06,
   };
-  if (!isLoaded) {
+  const refreshImages = useCallback(() => {
     refresh(60, textureStandLeft);
     refresh(60, textureStandRight);
     refresh(30, textureRunLeft);
     refresh(30, textureRunRight);
-    seIsLoaded(true);
-  }
+  }, [textureStandLeft, textureStandRight, textureRunLeft, textureRunRight]);
+
+  useEffect(() => {
+    refreshImages();
+  }, [refreshImages]);
 
   useFrame(({ camera }) => {
-    //Change level status
-
     if (camera.position.x < 5 && state.level.name !== `${t("home-title")}`) {
       dispatch({
         type: "changeLevelStatus",
@@ -142,7 +140,7 @@ const Player: React.FC = () => {
       });
     }
 
-    if (window.innerWidth < 1000 || window.innerHeight < 500) {
+    if (window.innerWidth < 1000 || window.innerHeight < 600) {
       dispatch({
         type: "changeSiteStatus",
         payload: {
@@ -150,8 +148,6 @@ const Player: React.FC = () => {
         },
       });
     }
-
-    const maxX = window.innerWidth / 250;
 
     if (!ref.current) {
       return;
@@ -163,8 +159,8 @@ const Player: React.FC = () => {
 
     ref.current.renderOrder = 1;
     if (
-      state.key.right.pressed &&
-      !state.key.left.pressed &&
+      state.key.right &&
+      !state.key.left &&
       textureAndScale.texture !== textureRunRight &&
       state.key.lastKey === "right"
     ) {
@@ -173,8 +169,8 @@ const Player: React.FC = () => {
         scale: { x: 1.5, y: 1.5 },
       });
     } else if (
-      state.key.left.pressed &&
-      !state.key.right.pressed &&
+      state.key.left &&
+      !state.key.right &&
       textureAndScale.texture !== textureRunLeft &&
       state.key.lastKey === "left"
     ) {
@@ -183,9 +179,9 @@ const Player: React.FC = () => {
         scale: { x: 1.5, y: 1.5 },
       });
     } else if (
-      !state.key.right.pressed &&
-      !state.key.left.pressed &&
-      !state.key.up.pressed &&
+      !state.key.right &&
+      !state.key.left &&
+      !state.key.up &&
       state.key.lastKey === "right" &&
       textureAndScale.texture !== textureStandRight
     ) {
@@ -194,9 +190,9 @@ const Player: React.FC = () => {
         scale: { x: 0.7, y: 1.5 },
       });
     } else if (
-      !state.key.left.pressed &&
-      !state.key.right.pressed &&
-      !state.key.up.pressed &&
+      !state.key.left &&
+      !state.key.right &&
+      !state.key.up &&
       state.key.lastKey === "left" &&
       textureAndScale.texture !== textureStandLeft
     ) {
@@ -216,7 +212,7 @@ const Player: React.FC = () => {
       setCurrentTile(0);
     }
 
-    if (state.key.up.pressed) {
+    if (state.key.up) {
       if (ref.current.position.y === player.positionY) {
         setJump(true);
       }
@@ -231,122 +227,98 @@ const Player: React.FC = () => {
     if (!jump && ref.current.position.y > player.positionY) {
       ref.current.position.y -= 0.08;
     }
-    if (state.key.right.pressed) {
-      rightMovement(
-        state.key.right.pressed,
-        camera,
-        ref,
-        maxX,
-        player.velocity
-      );
-    }
-    if (state.key.left.pressed) {
-      leftMovement(state.key.left.pressed, camera, ref, maxX, player.velocity);
+    if (state.key.right) {
+      rightMovement(state.key.right, camera, ref, maxX, player.velocity);
+    } else if (state.key.left) {
+      leftMovement(state.key.left, camera, ref, maxX, player.velocity);
     }
   });
 
+  const handleKeyDown = (event: any) => {
+    switch (event.keyCode) {
+      case 37:
+        if (!state.key.right && !state.key.left) {
+          dispatch({
+            type: "changeKeyStatus",
+            payload: {
+              ...state.key,
+              left: true,
+
+              lastKey: "left",
+            },
+          });
+        }
+        break;
+      case 39:
+        if (!state.key.right && !state.key.left) {
+          dispatch({
+            type: "changeKeyStatus",
+            payload: {
+              ...state.key,
+              right: true,
+
+              lastKey: "right",
+            },
+          });
+        }
+        break;
+      case 38:
+        if (!state.key.up) {
+          dispatch({
+            type: "changeKeyStatus",
+            payload: {
+              ...state.key,
+              up: true,
+            },
+          });
+        }
+        break;
+      default:
+        break;
+    }
+  };
+
+  const handleKeyUp = (event: any) => {
+    switch (event.keyCode) {
+      case 37:
+        if (state.key.left) {
+          dispatch({
+            type: "changeKeyStatus",
+            payload: {
+              ...state.key,
+              left: false,
+            },
+          });
+        }
+        break;
+      case 39:
+        if (state.key.right) {
+          dispatch({
+            type: "changeKeyStatus",
+            payload: {
+              ...state.key,
+              right: false,
+            },
+          });
+        }
+        break;
+      case 38:
+        if (state.key.up) {
+          dispatch({
+            type: "changeKeyStatus",
+            payload: {
+              ...state.key,
+              up: false,
+            },
+          });
+        }
+        break;
+      default:
+        break;
+    }
+  };
+
   useEffect(() => {
-    const handleKeyDown = (event: any) => {
-      switch (event.keyCode) {
-        case 37:
-          if (!state.key.right.pressed && !state.key.left.pressed) {
-            // setKeys((prevState) => ({
-            //   ...prevState,
-            //   left: {
-            //     pressed: true,
-            //   },
-            //   lastKey: "left",
-            // }));
-            dispatch({
-              type: "changeKeyStatus",
-              payload: {
-                ...state.key,
-                left: {
-                  pressed: true,
-                },
-                lastKey: "left",
-              },
-            });
-          }
-          break;
-        case 39:
-          if (!state.key.right.pressed && !state.key.left.pressed) {
-            dispatch({
-              type: "changeKeyStatus",
-              payload: {
-                ...state.key,
-                right: {
-                  pressed: true,
-                },
-                lastKey: "right",
-              },
-            });
-          }
-          break;
-        case 38:
-          if (!state.key.up.pressed) {
-            dispatch({
-              type: "changeKeyStatus",
-              payload: {
-                ...state.key,
-                up: {
-                  pressed: true,
-                },
-              },
-            });
-          }
-          break;
-        default:
-          break;
-      }
-    };
-
-    const handleKeyUp = (event: any) => {
-      switch (event.keyCode) {
-        case 37:
-          if (state.key.left.pressed) {
-            dispatch({
-              type: "changeKeyStatus",
-              payload: {
-                ...state.key,
-                left: {
-                  pressed: false,
-                },
-              },
-            });
-          }
-          break;
-        case 39:
-          if (state.key.right.pressed) {
-            dispatch({
-              type: "changeKeyStatus",
-              payload: {
-                ...state.key,
-                right: {
-                  pressed: false,
-                },
-              },
-            });
-          }
-          break;
-        case 38:
-          if (state.key.up.pressed) {
-            dispatch({
-              type: "changeKeyStatus",
-              payload: {
-                ...state.key,
-                up: {
-                  pressed: false,
-                },
-              },
-            });
-          }
-          break;
-        default:
-          break;
-      }
-    };
-
     document.addEventListener("keydown", handleKeyDown);
     document.addEventListener("keyup", handleKeyUp);
 
@@ -354,7 +326,7 @@ const Player: React.FC = () => {
       document.removeEventListener("keydown", handleKeyDown);
       document.removeEventListener("keyup", handleKeyUp);
     };
-  }, [state.key, dispatch]);
+  }, [handleKeyDown, handleKeyUp]);
 
   return (
     <Plane
@@ -366,6 +338,6 @@ const Player: React.FC = () => {
       scale-y={textureAndScale.scale.y}
     />
   );
-};
+});
 
 export default Player;

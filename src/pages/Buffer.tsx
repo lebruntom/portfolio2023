@@ -1,8 +1,12 @@
 import React, { Fragment, useContext } from "react";
 import { Context } from "../store/store";
 import Bio from "./Bio";
+import Contact from "./contact";
+import Cv from "./cv";
 import Home from "./Home";
+import Projects from "./Projects";
 import Scene from "./Scene";
+import Skills from "./Skills";
 
 const Buffer: React.FC = () => {
   const [state] = useContext(Context);
@@ -15,6 +19,10 @@ const Buffer: React.FC = () => {
         <>
           <Home />
           <Bio />
+          <Projects />
+          <Skills />
+          <Cv />
+          <Contact />
         </>
       )}
     </Fragment>

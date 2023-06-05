@@ -22,7 +22,7 @@
     "react-dom": "^18.2.0",
     "react-i18next": "^12.1.5",
     "react-icons": "^4.7.1",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "react-scroll": "^1.8.9",
     "sass": "^1.57.1",
     "three": "^0.148.0",

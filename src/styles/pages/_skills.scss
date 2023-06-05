@@ -10,8 +10,75 @@
   height: 100vh;
 }
 .skills_container_basic {
+  margin-top: 3.5em;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  padding-left: 5%;
+}
+.skills_container_basic .skills_img_container {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.skills_container_basic .skills_img_container .bar {
+  height: 0.3em;
+  width: 50%;
+  max-width: 350px;
+  background: $blueGradient;
+  border-radius: 5em;
+  margin-top: 1em;
+}
+.skills_container_basic .skills_img {
+  height: 75px;
 }
 
-.skills_img {
-  height: 50px;
+.skills_container .skills_img {
+  height: 9vh;
+}
+.skills_container .react_img {
+  position: absolute;
+  top: -20vh;
+  left: 5vw;
+}
+.skills_container .git_img {
+  position: absolute;
+  top: 5vh;
+  left: 25vw;
+}
+.skills_container .next_img {
+  position: absolute;
+  top: 25vh;
+  left: 45vw;
+}
+.skills_container .sql_img {
+  position: absolute;
+  top: 5vh;
+  left: 80vw;
+}
+.skills_container .typescript_img {
+  position: absolute;
+  top: -10vh;
+  left: 70vw;
+}
+.skills_container .javascript_img {
+  position: absolute;
+  top: 15vh;
+  left: 65vw;
+}
+.skills_container .symfony_img {
+  position: absolute;
+  top: -25vh;
+  left: 50vw;
+}
+.skills_container .node_img {
+  position: absolute;
+  top: -5vh;
+  left: 40vw;
+}
+.skills_container .php_img {
+  position: absolute;
+  top: 20vh;
+  left: 15vw;
 }

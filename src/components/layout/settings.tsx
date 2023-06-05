@@ -24,7 +24,11 @@ const Settings: React.FC = () => {
   };
   return (
     <>
-      <div className="settings_fixed">
+      <div
+        className={
+          state.site.basic ? "settings_fixed fadeIn2" : "settings_fixed "
+        }
+      >
         <Checkbox
           id={"networkView-showDetails"}
           onChange={handleChange}

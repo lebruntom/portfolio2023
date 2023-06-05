@@ -12,10 +12,14 @@ const Welcome: React.FC = () => {
   }
 
   return (
-    <div className={state.site.basic ? "welcome " : "welcome_animationText"}>
+    <div
+      className={
+        state.site.basic ? "welcome fadeInWithDelay" : "welcome_animationText"
+      }
+    >
       <h1>
-        {array.map((letter) => (
-          <span>{letter}</span>
+        {array.map((letter, index) => (
+          <span key={`${index}-welocome`}>{letter}</span>
         ))}
       </h1>
       <div className="welcome-subtile">Portfolio Tom Lebrun</div>

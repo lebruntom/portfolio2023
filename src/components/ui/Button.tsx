@@ -6,7 +6,17 @@ interface ButtonProps
 }
 
 const Button: React.FC<ButtonProps> = ({ main, ...props }) => {
-  return <button className={main ? "btn" : "btn_secondary"} {...props} />;
+  return (
+    <>
+      {main ? (
+        <button className="btn" {...props} />
+      ) : (
+        <div className="btn_secondary_container">
+          <button className="btn_secondary" {...props} />
+        </div>
+      )}
+    </>
+  );
 };
 
 export default Button;

@@ -2,12 +2,12 @@ import React from "react";
 
 interface svgProps {
   rotation: number;
-  width: number;
-  height: number;
-  top: number;
-  left: number;
-  right: number;
-  bottom: number;
+  width: string;
+  height: string;
+  top: string;
+  left: string;
+  right: string;
+  bottom: string;
 }
 const Svg: React.FC<svgProps> = (props) => {
   const { rotation, width, height, top, left, right, bottom } = props;
@@ -17,7 +17,7 @@ const Svg: React.FC<svgProps> = (props) => {
       viewBox="0 0 100 100"
       xmlns="http://www.w3.org/2000/svg"
       version="1.1"
-      className={"svg"}
+      className={"svg basicFade"}
       style={{
         top: top,
         width: width,
@@ -30,8 +30,8 @@ const Svg: React.FC<svgProps> = (props) => {
     >
       <defs>
         <linearGradient id="sw-gradient" x1="0" x2="1" y1="1" y2="0">
-          <stop id="stop1" stopColor="#f8c750" offset="0%"></stop>
-          <stop id="stop2" stopColor="#f8c750" offset="100%"></stop>
+          <stop id="stop1" stopColor="#F6AF65" offset="0%"></stop>
+          <stop id="stop2" stopColor="#F6AF65 " offset="100%"></stop>
         </linearGradient>
       </defs>
       <path

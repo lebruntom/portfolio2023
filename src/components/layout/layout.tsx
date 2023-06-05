@@ -6,6 +6,7 @@ import Navigation from "./navigation";
 import Fps from "./fps";
 import { useTranslation } from "react-i18next";
 import Loader from "../ui/loader";
+import Network from "./network";
 
 const Layout: React.FC<React.PropsWithChildren> = ({ children }) => {
   const [state] = useContext(Context);
@@ -18,6 +19,7 @@ const Layout: React.FC<React.PropsWithChildren> = ({ children }) => {
       ) : (
         <>
           <Settings />
+          <Network />
           {state.site.basic ? (
             <>
               <Navigation />

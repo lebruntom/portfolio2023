@@ -2,6 +2,7 @@
   height: 50vh;
   position: absolute;
   width: auto;
+  margin: 1em;
 }
 .cards_container .date {
   font-size: 2em;
@@ -12,9 +13,9 @@
 }
 .cards_container .bar {
   height: 50vh;
-  width: 0.5vw;
+  width: 0.3em;
   border-radius: 0.5em;
-  background: $blue;
+  background: $blueGradient2;
 }
 .cards_container .button_container {
   position: absolute;
@@ -25,6 +26,57 @@
 .cards_container .card_img {
   position: absolute;
   top: 5vh;
+  width: 15vw;
+  left: 1vw;
+  background-size: cover;
+}
+.cards_container .description {
+  position: absolute;
+  top: 20vh;
+  left: 15px;
+  width: 15vw;
+  display: flex;
+}
+
+.cards_container_basic {
+  padding: 2em;
+  height: 350px;
+}
+
+.cards_container_basic .bar {
+  height: 350px;
+  width: 0.3em;
+  border-radius: 0.5em;
+  background: $blueGradient2;
+}
+.cards_container_basic .img_container {
+  height: 100px;
+}
+
+.cards_container_basic .card_img {
+  position: relative;
+  top: -325px;
   width: 250px;
   background-size: cover;
+}
+.cards_container_basic .description {
+  position: relative;
+  top: -275px;
+  left: 15px;
+  width: 250px;
+  display: flex;
+  height: 150px;
+}
+.cards_container_basic .button_container {
+  position: relative;
+  top: -335px;
+  left: 1em;
+  width: 250px;
+}
+.cards_container_basic .date {
+  font-size: 2em;
+  position: relative;
+  rotate: 270deg;
+  left: -4.5em;
+  top: -650px;
 }

@@ -20,7 +20,7 @@ export function rightMovement(key: boolean, camera: Camera, ref: React.RefObject
 
   if (key && ref.current.position.x < maxX + camera.position.x) {
     ref.current.position.x += velocity;
-  } else if (key && camera.position.x < 80) {
+  } else if (key && camera.position.x < 83) {
     camera.position.x += velocity;
     ref.current.position.x += velocity;
   } else if (ref.current.position.x >= maxX + camera.position.x + 0.1) {

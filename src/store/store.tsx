@@ -6,18 +6,10 @@ interface levelInterface {
 }
 
 interface keyInterface {
-  right: {
-    pressed: boolean;
-  };
-  left: {
-    pressed: boolean;
-  };
-  up: {
-    pressed: boolean;
-  };
-  down: {
-    pressed: boolean;
-  };
+  right: boolean;
+  left: boolean;
+  up: boolean;
+  down: boolean;
   lastKey: "left" | "right" | "up" | "down" | "";
 }
 
@@ -51,18 +43,10 @@ const initialState: StateInterface = {
     number: 1,
   },
   key: {
-    right: {
-      pressed: false,
-    },
-    left: {
-      pressed: false,
-    },
-    up: {
-      pressed: false,
-    },
-    down: {
-      pressed: false,
-    },
+    right: false,
+    left: false,
+    up: false,
+    down: false,
     lastKey: "",
   },
   site: {
@@ -85,6 +69,7 @@ export const Store: React.FC<React.PropsWithChildren> = ({ children }) => {
           return { ...state, key: action.payload };
         case "changeLevelStatus":
           return { ...state, level: action.payload };
+
         default:
           return state;
       }

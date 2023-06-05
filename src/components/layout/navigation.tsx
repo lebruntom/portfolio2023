@@ -7,7 +7,9 @@ import LocaleChanger from "./locale-changer";
 const Navigation: React.FC = () => {
   const [isScrolling, setIsScrolling] = useState<Boolean>(false);
   const { t } = useTranslation("main");
-  const checkboxRef = useRef<HTMLInputElement | null>(null);
+  // const checkboxRef = useRef<HTMLInputElement | null>(null);
+  const [checkBoxChecked, setCheckBoxChecked] = useState<boolean>();
+
   window.onscroll = function () {
     if (
       document.body.scrollTop > 50 ||
@@ -20,10 +22,10 @@ const Navigation: React.FC = () => {
   };
 
   function checkboxChecked() {
-    if (!checkboxRef.current) {
-      return;
-    }
-    checkboxRef.current.checked = false;
+    // if (!checkboxRef.current) {
+    //   return;
+    // }
+    setCheckBoxChecked(false);
   }
 
   return (
@@ -33,7 +35,9 @@ const Navigation: React.FC = () => {
           type="checkbox"
           className="navigationCheckbox"
           id="navi"
-          ref={checkboxRef}
+          onClick={() => setCheckBoxChecked(!checkBoxChecked)}
+          // ref={checkboxRef}
+          checked={checkBoxChecked}
         ></input>
 
         <label htmlFor="navi" className="navigationBtn">
@@ -43,7 +47,7 @@ const Navigation: React.FC = () => {
         <div className="navigationBg">&nbsp;</div>
 
         <header className="nav">
-          <ul className="navigationListe">
+          <ul className={checkBoxChecked ? "navigationListe" : "none"}>
             <li className="navigationItem">
               <Link
                 activeClass="underline"
@@ -77,7 +81,7 @@ const Navigation: React.FC = () => {
             <li className="navigationItem">
               <Link
                 activeClass="underline"
-                to="veilles"
+                to="projects"
                 spy={true}
                 smooth={true}
                 offset={-50}
@@ -92,7 +96,7 @@ const Navigation: React.FC = () => {
             <li className="navigationItem">
               <Link
                 activeClass="underline"
-                to="certif"
+                to="skills"
                 spy={true}
                 smooth={true}
                 offset={-50}
@@ -140,10 +144,8 @@ const Navigation: React.FC = () => {
         </header>
       </div>
 
-      <div className="navigation-pc">
-        <nav
-          className={isScrolling ? "nav-pc fade-in black" : "nav-pc fade-in"}
-        >
+      <div className="navigation-pc ">
+        <nav className={isScrolling ? "nav-pc fade-in black" : "nav-pc fadeIn"}>
           <div className="logo">
             <Link
               activeClass="logo"
@@ -191,7 +193,7 @@ const Navigation: React.FC = () => {
             <li>
               <Link
                 activeClass="underline"
-                to="veilles"
+                to="projects"
                 spy={true}
                 smooth={true}
                 offset={-100}
@@ -204,7 +206,7 @@ const Navigation: React.FC = () => {
             <li>
               <Link
                 activeClass="underline"
-                to="certif"
+                to="skills"
                 spy={true}
                 smooth={true}
                 offset={-100}
@@ -217,7 +219,7 @@ const Navigation: React.FC = () => {
             <li>
               <Link
                 activeClass="underline"
-                to="stages"
+                to="cv"
                 spy={true}
                 smooth={true}
                 offset={-100}

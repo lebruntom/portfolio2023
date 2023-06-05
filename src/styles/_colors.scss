@@ -3,7 +3,7 @@ $blackPrimary: #1b1d22;
 $bluePrimary: #779db1;
 $orangePrimary: #dea25e;
 
-$yellowPrimary: #f4b02d;
+$yellowPrimary: #f8c6509b;
 $background: #f9f9f9;
 $backgroundSecondary: #f8c750;
 $backgroundSecondary2: #fee6b7;
@@ -12,7 +12,31 @@ $brownPrimary: #55442b;
 $white: #f6f6f6;
 $grey: #dedede;
 
-$red: #ff4444;
-$red2: #ff6666;
-$blue: #167c96;
-$blue2: #156175;
+$red: #d43838;
+// $red2: #e13c3c;
+$red2: #7d5ba6;
+$blue: #244054;
+
+// $red2: #e13c3c;
+
+// $blue2: #156175;
+$blue2: #45b0cb;
+// $blue: #643173;
+
+// $red: #8d6b94;
+// $red2: #b185a7;
+// $red2: #ff6666;
+// $blue: #166c6f;
+// $blue2: #156175;
+$blue2: #0c5e79;
+// $blue2: #7d5ba6;
+
+$redGradient: linear-gradient(142deg, $red 0%, $red2 100%);
+$blueGradient: linear-gradient(142deg, $blue 0%, $blue2 100%);
+$blueGradient2: linear-gradient(0deg, $blue 0%, $blue2 100%);
+
+$successGradient: linear-gradient(
+  90deg,
+  rgba(0, 195, 3, 0.4963235294117647) 0%,
+  rgba(251, 251, 251, 0) 70%
+);

@@ -3,8 +3,8 @@
   left: 50vw;
   border-radius: 0.2em;
   width: 40vw;
-  height: 0.5em;
-  background-color: $blue;
+  height: 0.3em;
+  background: $blueGradient;
   top: -25vh;
 }
 
@@ -30,8 +30,7 @@
   height: 20vh;
   border-bottom-right-radius: 1em;
   z-index: -1;
-  border-right: 0.5em solid $blue;
-  border-bottom: 0.5em solid $blue;
+
   left: 110vw;
   bottom: -35vh;
   padding: 1em;
@@ -94,8 +93,8 @@
 .presentation-basic .border_top {
   border-radius: 0.2em;
   width: 40vw;
-  height: 0.5em;
-  background-color: $blue;
+  height: 0.3em;
+  background: $blueGradient;
 }
 
 .presentation-basic .border_bottom_right {
@@ -103,10 +102,39 @@
   height: 20vh;
   min-height: 7em;
   border-bottom-right-radius: 1em;
-  z-index: -1;
-  border-right: 0.5em solid $blue;
-  border-bottom: 0.5em solid $blue;
+  z-index: 1;
+  // border-right: 0.5em solid $blue;
+  // border-bottom: 0.5em solid $blue;
   padding: 1em;
+}
+.presentation-basic .border_bottom_right .container2,
+.presentation .border_bottom_right .container2 {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+}
+.presentation-basic .border_bottom_right .left-container,
+.presentation .border_bottom_right .left-container {
+  padding-right: 1em;
+  width: 100%;
+}
+.presentation-basic .border_bottom_right .border-right,
+.presentation .border_bottom_right .border-right {
+  height: 100%;
+  width: 0.3em;
+  background: $blueGradient;
+  border-top-right-radius: 0.5em;
+  border-top-left-radius: 0.5em;
+}
+.presentation-basic .border_bottom_right .border-bottom,
+.presentation .border_bottom_right .border-bottom {
+  height: 0.3em;
+  width: 100%;
+  background: $blueGradient;
+  border-bottom-left-radius: 0.5em;
+  border-top-left-radius: 0.5em;
+  border-bottom-right-radius: 1em;
 }
 
 .presentation-basic .content {

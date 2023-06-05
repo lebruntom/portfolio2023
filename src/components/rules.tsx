@@ -1,72 +1,74 @@
-import React, { useEffect, useState, useCallback, useContext } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { BsChevronLeft, BsChevronRight, BsChevronUp } from "react-icons/bs";
-import { Context } from "../store/store";
 import Welcome from "./welcome";
 const Rules: React.FC = () => {
   const [key, setKey] = useState("");
-  const [state, dispatch] = useContext(Context);
   const { t } = useTranslation("main");
 
-  const handleKeyDown = useCallback(
-    (event: any) => {
-      switch (event.keyCode) {
-        case 37:
-          if (key !== "right") {
-            setKey("right");
-          }
-          break;
-        case 39:
-          if (key !== "left") {
-            setKey("left");
-          }
-          break;
-        case 38:
-          if (key !== "up") {
-            setKey("up");
-          }
-          break;
-        default:
-          break;
-      }
-    },
-    [key]
-  );
+  function useKeyPress(key: string) {
+    const handleKeyDown = useCallback(
+      (event: any) => {
+        switch (event.keyCode) {
+          case 37:
+            if (key !== "right") {
+              setKey("right");
+            }
+            break;
+          case 39:
+            if (key !== "left") {
+              setKey("left");
+            }
+            break;
+          case 38:
+            if (key !== "up") {
+              setKey("up");
+            }
+            break;
+          default:
+            break;
+        }
+      },
+      [key]
+    );
 
-  const handleKeyUp = useCallback(
-    (event: any) => {
-      switch (event.keyCode) {
-        case 37:
-          if (key === "right") {
-            setKey("");
-          }
-          break;
-        case 39:
-          if (key === "left") {
-            setKey("");
-          }
-          break;
-        case 38:
-          if (key === "up") {
-            setKey("");
-          }
-          break;
-        default:
-          break;
-      }
-    },
-    [key]
-  );
+    const handleKeyUp = useCallback(
+      (event: any) => {
+        switch (event.keyCode) {
+          case 37:
+            if (key === "right") {
+              setKey("");
+            }
+            break;
+          case 39:
+            if (key === "left") {
+              setKey("");
+            }
+            break;
+          case 38:
+            if (key === "up") {
+              setKey("");
+            }
+            break;
+          default:
+            break;
+        }
+      },
+      [key]
+    );
 
-  useEffect(() => {
-    document.addEventListener("keydown", handleKeyDown);
-    document.addEventListener("keyup", handleKeyUp);
+    useEffect(() => {
+      document.addEventListener("keydown", handleKeyDown);
+      document.addEventListener("keyup", handleKeyUp);
 
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-      document.removeEventListener("keyup", handleKeyUp);
-    };
-  }, [handleKeyDown, handleKeyUp]);
+      return () => {
+        document.removeEventListener("keydown", handleKeyDown);
+        document.removeEventListener("keyup", handleKeyUp);
+      };
+    }, [handleKeyDown, handleKeyUp]);
+  }
+
+  useKeyPress(key);
 
   return (
     <div className="rules_container">

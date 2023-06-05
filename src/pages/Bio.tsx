@@ -16,51 +16,51 @@ const Bio: React.FC = () => {
       {!state.site.basic ? (
         <>
           <Svg
-            top={200}
-            bottom={0}
-            left={100}
-            right={0}
-            width={300}
-            height={300}
+            top={"200"}
+            bottom={"0"}
+            left={"100"}
+            right={"0"}
+            width={"300"}
+            height={"300"}
             rotation={0}
           />
           <Svg
-            top={-200}
-            bottom={0}
-            left={1200}
-            right={0}
-            width={500}
-            height={500}
+            top={"-200"}
+            bottom={"0"}
+            left={"1200"}
+            right={"0"}
+            width={"500"}
+            height={"500"}
             rotation={90}
           />
           <Svg
-            top={-600}
-            bottom={60}
-            left={500}
-            right={0}
-            width={400}
-            height={400}
+            top={"-600"}
+            bottom={"60"}
+            left={"500"}
+            right={"0"}
+            width={"400"}
+            height={"400"}
             rotation={120}
           />
         </>
       ) : (
         <>
           <Svg
-            top={1000}
-            bottom={60}
-            left={0}
-            right={0}
-            width={400}
-            height={400}
+            top={"1000"}
+            bottom={"60"}
+            left={"0"}
+            right={"0"}
+            width={"25vw"}
+            height={"25vw"}
             rotation={120}
           />
           <Svg
-            top={800}
-            bottom={60}
-            left={1300}
-            right={0}
-            width={400}
-            height={400}
+            top={"800"}
+            bottom={"60"}
+            left={"60vw"}
+            right={"0"}
+            width={"30vw"}
+            height={"30vw"}
             rotation={180}
           />
         </>

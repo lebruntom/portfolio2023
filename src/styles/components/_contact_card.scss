@@ -1,0 +1,9 @@
+.contact_card_container {
+  border: 0.3em solid $blue;
+  height: min-content;
+  padding: 3em 1em;
+  border-radius: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}

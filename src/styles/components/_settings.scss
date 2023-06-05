@@ -10,9 +10,12 @@
   // rotate: 90deg;
   z-index: -111111110;
   position: absolute;
+  filter: blur(25px);
+
   // top: -500px;
   // right: -150px;
 }
+
 .local-changer {
   cursor: pointer;
   background-color: $background;
@@ -45,5 +48,21 @@
 @media screen and (max-width: 1000px) {
   .local-changer-container {
     display: none;
+  }
+}
+
+.networkFade {
+  animation: networkFade 1s;
+  animation-delay: 1s;
+  animation-fill-mode: both;
+}
+
+@keyframes networkFade {
+  from {
+    transform: translateX(-80px);
+  }
+
+  to {
+    transform: translateX(0);
   }
 }

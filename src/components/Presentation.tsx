@@ -1,14 +1,39 @@
-import { CiLocationArrow1 } from "react-icons/ci";
-import { BsCalendar } from "react-icons/bs";
-import { AiOutlineCar } from "react-icons/ai";
+import { FaCarAlt, FaLocationArrow, FaCalendar } from "react-icons/fa";
 import Button from "./ui/Button";
 import { useTranslation } from "react-i18next";
 import React, { useContext } from "react";
 import { Context } from "../store/store";
+import { scroller } from "react-scroll"; //Importation scroll
 
 const Presentation: React.FC = () => {
   const { t } = useTranslation("main");
   const [state] = useContext(Context);
+
+  function goToContact() {
+    if (state.site.basic) {
+      scroller.scrollTo("contact", {
+        duration: 1000,
+        delay: 0,
+        smooth: true,
+        container: "contact",
+        offset: 50,
+      });
+    }
+  }
+
+  function goToCv() {
+    if (state.site.basic) {
+      scroller.scrollTo("cv", {
+        duration: 1000,
+        delay: 0,
+        smooth: true,
+        container: "cv",
+        offset: 50,
+      });
+    } else {
+      window.open(require("../assets/files/CV_Tom_Lebrun.pdf"), "_blank");
+    }
+  }
 
   return (
     <div className={state.site.basic ? "presentation-basic" : "presentation"}>
@@ -29,35 +54,38 @@ const Presentation: React.FC = () => {
             <h3>Detail</h3>
             <div className="list">
               <li>
-                <BsCalendar className="icon" />
+                <FaCalendar className="icon" />
                 {t("label-yo")}
               </li>
               <li>
-                <AiOutlineCar className="icon" />
+                <FaCarAlt className="icon" />
                 {t("label-driving-licence")}
               </li>
               <li>
-                <CiLocationArrow1 className="icon" />
+                <FaLocationArrow className="icon" />
                 {t("label-location")}
               </li>
             </div>
           </div>
           <div className="border_bottom_right">
-            {" "}
-            <Button
-              type="button"
-              main={true}
-              onClick={() => console.log("test")}
-            >
-              Contactez-moi
-            </Button>
-            <Button
-              type="button"
-              main={false}
-              onClick={() => console.log("test2")}
-            >
-              {t("label-contact-me")}
-            </Button>
+            <div className="container2">
+              <div className="left-container">
+                <div>
+                  <Button type="button" main={true} onClick={() => goToCv()}>
+                    {t("cv-title")}
+                  </Button>
+                  <Button
+                    type="button"
+                    main={false}
+                    onClick={() => goToContact()}
+                  >
+                    {t("label-contact-me")}
+                  </Button>
+                </div>
+              </div>
+              <div className="border-right"></div>
+            </div>
+            <div className="border-bottom"></div>
           </div>
         </div>
       </div>

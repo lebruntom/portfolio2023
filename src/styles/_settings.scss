@@ -18,13 +18,88 @@ body {
 html,
 body {
   max-width: 100%;
-  overflow-x: hidden;
+  // overflow-x: hidden;
 }
 div,
 li,
-button {
+button,
+input,
+textarea,
+span {
   font-family: "sourcecodepro-regular";
 }
 canvas {
   z-index: 1000000 !important;
+}
+
+.title {
+  position: sticky;
+  top: 75px;
+  z-index: 1000;
+  width: fit-content;
+  border-bottom-right-radius: 0.5em;
+  backdrop-filter: blur(10px);
+  font-size: 1.5em;
+  padding: 1em 5%;
+  // padding-right: 0;
+  padding-right: 1em;
+  font-weight: bold;
+}
+@media screen and (max-width: 1000px) {
+  .title {
+    // height: 40px;
+    background: unset;
+    top: 0;
+    padding: 1.5em;
+    padding-right: 0.5em;
+  }
+}
+
+.fadeIn {
+  animation: fadeIn 1s;
+}
+
+.fadeIn2 {
+  animation: fadeIn2 1s;
+}
+.fadeInWithDelay {
+  animation: fadeIn 1s;
+  animation-delay: 0.5s;
+  animation-fill-mode: both;
+}
+.basicFade {
+  animation: basicFade 2s;
+  animation-fill-mode: both;
+}
+@keyframes fadeIn {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes fadeIn2 {
+  from {
+    transform: translateY(-300%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes basicFade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }

@@ -9,3 +9,9 @@
   width: 100vw;
   height: 100vh;
 }
+.projetcts_container_basic {
+  display: flex;
+  padding: 5%;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}

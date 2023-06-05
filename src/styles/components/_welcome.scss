@@ -2,7 +2,6 @@
   position: fixed;
   top: -3em;
   font-size: 3em;
-  font-family: BrassMono;
   display: flex;
   flex-direction: column;
 }
@@ -100,6 +99,7 @@
 .welcome_animationText span,
 .welcome span {
   color: $blue;
+
   opacity: 1;
   animation: sideSlide 5s linear;
   animation-iteration-count: infinite;

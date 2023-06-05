@@ -5,7 +5,7 @@ const TopBar: React.FC = () => {
   const [state, dispatch] = useContext(Context);
   const { t, i18n } = useTranslation("main");
   return (
-    <div className="topBar_container">
+    <div className="topBar_container fadeIn">
       {t("level-title")} {state.level.number} : {state.level.name}
     </div>
   );
